@@ -1434,6 +1434,7 @@ extern int create_cluster_tables(mysql_conn_t *mysql_conn, char *cluster_name)
 		{ "system_comment", "text" },
 		{ "tres_alloc", "text not null default ''" },
 		{ "tres_req", "text not null default ''" },
+		{ "emissions_start", "int unsigned default 0 not null "},
 		{ NULL, NULL}
 	};
 
