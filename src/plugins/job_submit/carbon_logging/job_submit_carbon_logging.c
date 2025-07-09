@@ -400,6 +400,8 @@ void _compute_carbon(job_desc_msg_t *job_desc, part_record_t * part_ptr)
 	job_desc->power_est = num_nodes * power_nodes;
 	job_desc->energy_est = energy;
 	job_desc->sci_est = op_emissions + em_emissions;
+	job_desc->emissions_start = 1016;
+	fprintf(stderr,"emissions_start job_submit_carbon_logging %d\n",job_desc->emissions_start);
 	job_desc->sci_fcst = op_emissions_forecast + em_emissions;
 	double change_rate = (future_intensity - current_intensity) / current_intensity;
 

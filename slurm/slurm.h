@@ -1743,6 +1743,7 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	char *x11_magic_cookie;	/* automatically stolen from submit node */
 	char *x11_target;	/* target hostname, or unix socket if port == 0 */
 	uint16_t x11_target_port; /* target tcp port, 6000 + the display number */
+	uint16_t emissions_start; /* add the a new variable */
 } job_desc_msg_t;
 
 typedef struct job_info {
@@ -1900,6 +1901,7 @@ typedef struct job_info {
 	uint32_t wait4switch;   /* Maximum time to wait for minimum switches */
 	char *wckey;            /* wckey for job */
 	char *work_dir;		/* pathname of working directory */
+	uint16_t emissions_start;
 } slurm_job_info_t;
 
 typedef slurm_job_info_t job_info_t;

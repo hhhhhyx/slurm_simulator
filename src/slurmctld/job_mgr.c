@@ -8692,6 +8692,9 @@ static int _copy_job_desc_to_job_record(job_desc_msg_t *job_desc,
 
 	job_ptr->selinux_context = xstrdup(job_desc->selinux_context);
 
+	job_ptr->emissions_start = job_desc->emissions_start;
+	fprintf(stderr,"emissions_start job_mgr %d\n",job_ptr->emissions_start); // convert the job_desc to job_record
+
 	return SLURM_SUCCESS;
 }
 

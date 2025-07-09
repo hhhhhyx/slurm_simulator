@@ -2843,6 +2843,8 @@ extern int jobacct_storage_p_job_start(void *db_conn, job_record_t *job_ptr)
 	dbd_id_rc_msg_t *resp;
 	int rc = SLURM_SUCCESS;
 
+	// job_ptr->emissions_start  = 1017;
+
 	if ((rc = _setup_job_start_msg(&req, job_ptr)) != SLURM_SUCCESS)
 		return rc;
 

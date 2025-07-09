@@ -2641,6 +2641,8 @@ extern void launch_job(job_record_t *job_ptr)
 	agent_arg_ptr->msg_args = (void *) launch_msg_ptr;
 	set_agent_arg_r_uid(agent_arg_ptr, SLURM_AUTH_UID_ANY);
 
+	fprintf(stderr,"emissions_start job_scheduler %d\n",job_ptr->emissions_start);
+
 	/* Launch the RPC via agent */
 	agent_queue_request(agent_arg_ptr);
 }
