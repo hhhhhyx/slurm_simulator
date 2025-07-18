@@ -505,6 +505,7 @@ AC_CONFIG_FILES([Makefile
 		 src/plugins/job_submit/defaults/Makefile
 		 src/plugins/job_submit/logging/Makefile
 		 src/plugins/job_submit/carbon_logging/Makefile
+		 src/plugins/job_submit/carbon_penalty_logging/Makefile
 		 src/plugins/job_submit/lua/Makefile
 		 src/plugins/job_submit/partition/Makefile
 		 src/plugins/job_submit/pbs/Makefile

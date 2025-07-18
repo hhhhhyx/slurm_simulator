@@ -10,4 +10,5 @@ SUBDIRS = \
 	pbs \
 	require_timelimit \
 	throttle \
-	carbon_logging
+	carbon_logging \
+	carbon_penalty_logging

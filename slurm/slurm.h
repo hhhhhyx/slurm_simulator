@@ -1544,6 +1544,26 @@ typedef struct power_mgmt_data {
  * _copy_job_desc_to_job_record()
  * slurm_free_job_desc_msg()
  */
+
+ #define MAX_DATA_SIZE 48
+typedef struct ci_data {
+	char *from;
+	char *to;
+	int intensity;
+	int index;
+} ci_data;
+
+typedef struct ci_data_array{
+	ci_data items[MAX_DATA_SIZE];
+	int size;
+	int capacity;
+} ci_data_array;
+
+typedef enum {
+    CI_LOW,
+    CI_MIDDLE,
+    CI_HIGH
+} CI_TIME_PERIOD;
 typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	char *account;		/* charge to specified account */
 	char *acctg_freq;	/* accounting polling intervals (seconds) */
@@ -1744,6 +1764,9 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	char *x11_target;	/* target hostname, or unix socket if port == 0 */
 	uint16_t x11_target_port; /* target tcp port, 6000 + the display number */
 	uint16_t emissions_start; /* add the a new variable */
+	char *carbon_intensity_period; /* defien the carbon intensity period, low middle high*/
+	double emissions_current;
+	double carbon_weight;
 } job_desc_msg_t;
 
 typedef struct job_info {

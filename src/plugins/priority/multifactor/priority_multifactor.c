@@ -1855,6 +1855,40 @@ extern uint32_t priority_p_set(uint32_t last_prio, job_record_t *job_ptr)
 	priority = _get_priority_internal(time(NULL), job_ptr);
 
 	logpe2("initial priority for job %u is %u", job_ptr->job_id, priority);
+	logpe2("emissions_start for job %u is %f", job_ptr->job_id, job_ptr->emissions_start);
+	time_t now;
+    time(&now); 
+
+   	printf("当前时间: %s", ctime(&now));
+
+	time(&job_ptr->details->submit_time);
+	printf("submit_time: %s", ctime(&job_ptr->details->submit_time));
+
+		/* modify the priority*/
+	//uint32_t wall_time =job_ptr->time_limit * 60;
+	//uint32_t wait_time = now() - job_ptr->details->submit_time;
+	//double time_weight = wait_time / wall_time;
+
+	// get system_utilization of nodes
+	//int total_nodes = 10;
+	//int occupied_nodes = slurm_load_jobs();// need to correct
+	//double system_node_utilization = (total_nodes - occupied_nodes) / total_nodes;
+
+	//double time_node_weight = time_weight * (1 + system_node_utilization);
+
+	//switch (job_ptr->carbon_intensity_period)
+	//{
+	//case CI_LOW:
+		/* code */
+	//	new_prio = new_prio * (time_node_weight + 1 * (1 - job_ptr->carbon_weight));
+	//	break;
+	//case CI_HIGH:
+	//	new_prio = new_prio * (time_node_weight + 1 * (0.1 - job_ptr->carbon_weight));
+	//default:
+	//	new_prio = new_prio * (time_node_weight + 1 * (0.5 - job_ptr->carbon_weight));
+	//	break;
+	//}
+
 
 	return priority;
 }
