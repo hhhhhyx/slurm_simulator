@@ -1547,8 +1547,8 @@ typedef struct power_mgmt_data {
 
  #define MAX_DATA_SIZE 48
 typedef struct ci_data {
-	char *from;
-	char *to;
+	// char *from;
+	// char *to;
 	int intensity;
 	int index;
 } ci_data;
@@ -1763,10 +1763,16 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	char *x11_magic_cookie;	/* automatically stolen from submit node */
 	char *x11_target;	/* target hostname, or unix socket if port == 0 */
 	uint16_t x11_target_port; /* target tcp port, 6000 + the display number */
-	uint16_t emissions_start; /* add the a new variable */
-	char *carbon_intensity_period; /* defien the carbon intensity period, low middle high*/
+	double emissions_start; /* add the a new variable */
+	CI_TIME_PERIOD carbon_intensity_period; /* defien the carbon intensity period, low middle high*/
 	double emissions_current;
 	double carbon_weight;
+	uint32_t one_hour_ago_job_throughput;
+	double energy;
+	double em_cpu;
+	double em_gpu;
+	double em_mem;
+	uint32_t num_nodes;
 } job_desc_msg_t;
 
 typedef struct job_info {
@@ -1924,7 +1930,6 @@ typedef struct job_info {
 	uint32_t wait4switch;   /* Maximum time to wait for minimum switches */
 	char *wckey;            /* wckey for job */
 	char *work_dir;		/* pathname of working directory */
-	uint16_t emissions_start;
 } slurm_job_info_t;
 
 typedef slurm_job_info_t job_info_t;

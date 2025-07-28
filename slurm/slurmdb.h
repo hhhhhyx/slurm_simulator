@@ -815,7 +815,6 @@ typedef struct {
 	time_t eligible;
 	time_t end;
 	char *env;
-	uint16_t emissions_start;
 	uint32_t exitcode;
 	char *extra; /* Extra - arbitrary string */
 	char *failed_node;

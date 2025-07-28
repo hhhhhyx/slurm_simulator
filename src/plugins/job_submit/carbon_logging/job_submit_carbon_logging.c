@@ -400,7 +400,6 @@ void _compute_carbon(job_desc_msg_t *job_desc, part_record_t * part_ptr)
 	job_desc->power_est = num_nodes * power_nodes;
 	job_desc->energy_est = energy;
 	job_desc->sci_est = op_emissions + em_emissions;
-	job_desc->emissions_start = 1016;
 	fprintf(stderr,"emissions_start job_submit_carbon_logging %d\n",job_desc->emissions_start);
 	job_desc->sci_fcst = op_emissions_forecast + em_emissions;
 	double change_rate = (future_intensity - current_intensity) / current_intensity;
@@ -547,7 +546,7 @@ extern int job_submit(job_desc_msg_t *job_desc, uint32_t submit_uid,
 	     submit_uid, job_desc->time_limit, job_desc->user_id, 
 		 job_desc->power_est, job_desc->energy_est, job_desc->sci_est,
 		 job_desc->sci_fcst, job_desc->change_rate);
-
+	info("Job submit emissions for job %s is %f", job_desc->name, job_desc->sci_est);
 
 	return SLURM_SUCCESS;
 }

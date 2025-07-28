@@ -4686,6 +4686,19 @@ extern job_record_t *job_array_split(job_record_t *job_ptr)
 							   false);
 	}
 
+	job_ptr_pend->emissions_start = job_ptr->emissions_start;
+	job_ptr_pend->carbon_weight = job_ptr->carbon_weight;
+	fprintf(stderr,"carbon_weight job_mgr job_array_split: %f\n",job_ptr_pend->carbon_weight);
+	job_ptr_pend->one_hour_ago_job_throughput = job_ptr->one_hour_ago_job_throughput;
+	fprintf(stderr,"one_hour_ago_job_throughput job_mgr job_array_split: %u\n",job_ptr_pend->one_hour_ago_job_throughput);
+	job_ptr_pend->carbon_intensity_period = job_ptr->carbon_intensity_period;
+
+	job_ptr_pend->energy = job_ptr->energy;
+	job_ptr_pend->em_cpu = job_ptr->em_cpu;
+	job_ptr_pend->em_gpu = job_ptr->em_gpu;
+	job_ptr_pend->em_mem = job_ptr->em_mem;
+	job_ptr_pend->energy = job_ptr->energy;
+
 	return job_ptr_pend;
 }
 
@@ -8693,8 +8706,16 @@ static int _copy_job_desc_to_job_record(job_desc_msg_t *job_desc,
 	job_ptr->selinux_context = xstrdup(job_desc->selinux_context);
 
 	job_ptr->emissions_start = job_desc->emissions_start;
-	fprintf(stderr,"emissions_start job_mgr %d\n",job_ptr->emissions_start); // convert the job_desc to job_record
+	job_ptr->carbon_weight = job_desc->carbon_weight;
+	job_ptr->one_hour_ago_job_throughput = job_desc->one_hour_ago_job_throughput;
+	job_ptr->carbon_intensity_period = job_desc->carbon_intensity_period;
 
+	job_ptr->energy = job_desc->energy;
+	job_ptr->em_cpu = job_desc->em_cpu;
+	job_ptr->em_gpu = job_desc->em_gpu;
+	job_ptr->em_mem = job_desc->em_mem;
+	job_ptr->energy = job_desc->energy;
+	
 	return SLURM_SUCCESS;
 }
 

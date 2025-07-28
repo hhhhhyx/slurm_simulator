@@ -49,6 +49,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <curl/curl.h>
+#include <json-c/json.h>
+#include <sys/stat.h>
+#include <dirent.h>
+#include <time.h>
+#include <math.h>
+#include <regex.h>
+#include <sys/types.h>
 
 #if HAVE_SYS_PRCTL_H
 #  include <sys/prctl.h>
@@ -101,6 +109,7 @@
 #endif
 #define BUILD_TIMEOUT 2000000	/* Max build_job_queue() run time in usec */
 #define MAX_FAILED_RESV 10
+#define KWH 2.77778e-7
 
 static batch_job_launch_msg_t *_build_launch_job_msg(job_record_t *job_ptr,
 						     uint16_t protocol_version);
@@ -2641,10 +2650,38 @@ extern void launch_job(job_record_t *job_ptr)
 	agent_arg_ptr->msg_args = (void *) launch_msg_ptr;
 	set_agent_arg_r_uid(agent_arg_ptr, SLURM_AUTH_UID_ANY);
 
-	fprintf(stderr,"emissions_start job_scheduler %d\n",job_ptr->emissions_start);
-
 	/* Launch the RPC via agent */
 	agent_queue_request(agent_arg_ptr);
+
+	/* get current carbon emissions here */
+	sched_info("launch_current_tensityyyy\n");
+	// time_t now = time(NULL);
+	// time_t start_time = job_ptr->start_time;
+
+	// int i = (now - start_time) / (60*30);
+	// int current_ci = job_ptr->next_ci_24h[0];
+	// sched_info("current carbon intensity:%d \n", current_ci);
+	// info("current carbon intensity:%d \n", current_ci);
+
+
+
+	// double em_cpu = job_ptr->em_cpu;
+	// double em_gpu = job_ptr->em_gpu;
+	// double em_mem = job_ptr->em_mem;
+	// double energy = job_ptr->energy;
+	// uint32_t num_nodes = job_ptr->num_nodes;
+	// uint32_t walltime =job_ptr->time_limit * 60; 
+	// double time_share = (double)(walltime/60.);
+
+	// // calculate launch current embodied emissions
+	// double em_emissions_actual = (em_cpu + em_gpu + em_mem) * num_nodes * time_share;
+	// // calculate launch current operational emissions
+	// double op_emissions_actual = (energy * KWH) * 1;
+
+	// double actual_emissions = em_emissions_actual + op_emissions_actual;
+	// sched_info("Job scheduler actual emissions for job %s is %f", job_ptr->job_id, actual_emissions);
+	// info("Job scheduler actual emissions for job %s is %f", job_ptr->job_id, actual_emissions);
+
 }
 
 /*

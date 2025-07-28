@@ -926,11 +926,16 @@ struct job_record {
 	uint32_t wait4switch; /* Maximum time to wait for minimum switches */
 	bool     best_switch; /* true=min number of switches met           */
 	time_t wait4switch_start; /* Time started waiting for switch       */
-	uint16_t emissions_start; /* add the new varaible*/
-	double sci_est; /* test  */
-	CI_TIME_PERIOD *carbon_intensity_period; /* defien the carbon intensity period, low middle high*/
+	double emissions_start; /* add the a new variable */
+	CI_TIME_PERIOD carbon_intensity_period; /* defien the carbon intensity period, low middle high*/
 	double emissions_current;
 	double carbon_weight;
+	uint32_t one_hour_ago_job_throughput;
+	double energy;
+	double em_cpu;
+	double em_gpu;
+	double em_mem;
+	uint32_t num_nodes;
 };
 
 /* Job dependency specification, used in "depend_list" within job_record */
