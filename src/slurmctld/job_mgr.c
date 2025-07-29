@@ -4693,11 +4693,12 @@ extern job_record_t *job_array_split(job_record_t *job_ptr)
 	fprintf(stderr,"one_hour_ago_job_throughput job_mgr job_array_split: %u\n",job_ptr_pend->one_hour_ago_job_throughput);
 	job_ptr_pend->carbon_intensity_period = job_ptr->carbon_intensity_period;
 
-	job_ptr_pend->energy = job_ptr->energy;
 	job_ptr_pend->em_cpu = job_ptr->em_cpu;
 	job_ptr_pend->em_gpu = job_ptr->em_gpu;
 	job_ptr_pend->em_mem = job_ptr->em_mem;
-	job_ptr_pend->energy = job_ptr->energy;
+	job_ptr_pend->num_nodes = job_ptr->num_nodes;
+	job_ptr_pend->power_nodes = job_ptr->power_nodes;
+	job_ptr_pend->em_emissions = job_ptr->em_emissions;
 
 	return job_ptr_pend;
 }
@@ -8710,11 +8711,13 @@ static int _copy_job_desc_to_job_record(job_desc_msg_t *job_desc,
 	job_ptr->one_hour_ago_job_throughput = job_desc->one_hour_ago_job_throughput;
 	job_ptr->carbon_intensity_period = job_desc->carbon_intensity_period;
 
-	job_ptr->energy = job_desc->energy;
 	job_ptr->em_cpu = job_desc->em_cpu;
 	job_ptr->em_gpu = job_desc->em_gpu;
 	job_ptr->em_mem = job_desc->em_mem;
-	job_ptr->energy = job_desc->energy;
+	job_ptr->num_nodes = job_desc->num_nodes;
+	job_ptr->power_nodes = job_desc->power_nodes;
+	job_ptr->em_emissions = job_desc->em_emissions;
+
 	
 	return SLURM_SUCCESS;
 }

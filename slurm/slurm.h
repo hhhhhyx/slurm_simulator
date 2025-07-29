@@ -1773,6 +1773,8 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	double em_gpu;
 	double em_mem;
 	uint32_t num_nodes;
+	double power_nodes;
+	double em_emissions;
 } job_desc_msg_t;
 
 typedef struct job_info {

@@ -57,6 +57,7 @@
 #include <math.h>
 #include <regex.h>
 #include <sys/types.h>
+#include <inttypes.h>
 
 #if HAVE_SYS_PRCTL_H
 #  include <sys/prctl.h>
@@ -110,6 +111,10 @@
 #define BUILD_TIMEOUT 2000000	/* Max build_job_queue() run time in usec */
 #define MAX_FAILED_RESV 10
 #define KWH 2.77778e-7
+
+#define TIME_FORMAT "%Y-%m-%dT%H:%M:%SZ"
+#define REGION_ID 16 // Scotland
+#define LCA_FACTOR 6.342*1e-9 
 
 static batch_job_launch_msg_t *_build_launch_job_msg(job_record_t *job_ptr,
 						     uint16_t protocol_version);
@@ -2593,6 +2598,162 @@ static void _set_het_job_env(job_record_t *het_job_leader,
 	launch_msg_ptr->envc = i;
 }
 
+
+void get_iso8601_time(char *from, size_t buffer_size) {
+	time_t now = time(NULL);
+	struct tm *tm_info = gmtime(&now);
+	strftime(from, buffer_size, TIME_FORMAT, tm_info);
+}
+
+/* Callback to handle the HTTP response */
+static size_t _write_callback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+    size_t realsize = size * nmemb;
+    char **buffer = (char**)userp;
+	if (*buffer == NULL) {
+		*buffer = (char*)malloc(1);
+	}
+
+    // Allocate a new buffer with the desired size
+    char *new_buffer = malloc(strlen(*buffer) + realsize + 1);
+    if (new_buffer == NULL) {
+        fprintf(stderr, "out of memory\n");
+        return 0;
+    }
+
+    // Copy the old buffer contents to the new buffer
+    strcpy(new_buffer, *buffer);
+
+    // Copy the new data to the end of the new buffer
+    memcpy(&new_buffer[strlen(*buffer)], contents, realsize);
+    new_buffer[strlen(*buffer) + realsize] = '\0';
+
+    // Free the old buffer
+	if (**buffer)
+	    free(*buffer);
+
+    // Update the buffer pointer
+    *buffer = new_buffer;
+
+    return realsize;
+}
+
+
+int32_t _get_intensity(char *url) {
+ CURL *curl;
+    CURLcode res;
+	char * response="";
+    curl = curl_easy_init();
+    if (curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, _write_callback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+        res = curl_easy_perform(curl);
+		fprintf(stderr, "%s\n", url);
+
+        if (res != CURLE_OK) {
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        }
+	}
+	json_object *root_obj = json_tokener_parse(response);
+    if (!root_obj) {
+        fprintf(stderr, "Error parsing JSON: %s\n", response);
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+		return -1;
+
+    }
+	json_object *first_region;
+    json_object *data_array = json_object_object_get(root_obj, "data");
+    if (!data_array || !json_object_is_type(data_array, json_type_array)) {
+        //fprintf(stderr, "Error: 'data' is not an array\n");
+		if (!data_array) {
+        	json_object_put(root_obj);
+        	curl_easy_cleanup(curl);
+        	free(response);
+			return -1;
+		}
+		first_region = data_array;
+    }
+	else {
+
+    first_region = json_object_array_get_idx(data_array, 0);
+    if (!first_region || !json_object_is_type(first_region, json_type_object)) {
+        fprintf(stderr, "Error: First region is not an object\n");
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+		return -1;
+
+            }
+	}
+    json_object *region_data_array = json_object_object_get(first_region, "data");
+    if (!region_data_array || !json_object_is_type(region_data_array, json_type_array)) {
+        fprintf(stderr, "Error: 'data' in region is not an array\n");
+//        json_object_put(root_obj);
+//        curl_easy_cleanup(curl);
+//        free(response);
+//		return -1;
+
+    }
+	//Forecast:last item else first item
+	int array_length = json_object_array_length(region_data_array);
+	json_object *first_data_item = json_object_array_get_idx(region_data_array, array_length -1);
+	
+    //json_object *first_data_item = json_object_array_get_idx(region_data_array, 0);
+    if (!first_data_item || !json_object_is_type(first_data_item, json_type_object)) {
+        fprintf(stderr, "Error: First data item is not an object\n");
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+		return -1;
+
+    }
+
+    json_object *intensity_obj = json_object_object_get(first_data_item, "intensity");
+    if (!intensity_obj || !json_object_is_type(intensity_obj, json_type_object)) {
+        fprintf(stderr, "Error: 'intensity' is not an object\n");
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+		return -1;
+
+    }
+
+    json_object *forecast_value = json_object_object_get(intensity_obj, "forecast");
+    if (!forecast_value || !json_object_is_type(forecast_value, json_type_int)) {
+        fprintf(stderr, "Error: 'forecast' is not an integer\n");
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+		return -1;
+    }
+
+    uint32_t forecast = (uint32_t)json_object_get_int(forecast_value);
+	const char * str_forecast = json_object_get_string(forecast_value);
+	fprintf(stderr, "Forecast: as str %s as int %u\n", str_forecast, forecast);
+
+        json_object_put(root_obj);
+        curl_easy_cleanup(curl);
+        free(response);
+	return forecast;		
+}
+
+
+static uint32_t get_intensity_now() {
+	// https://carbon-intensity.github.io/api-definitions/#get-regional-regionid-regionid
+	char from[25];
+	char url[256];
+
+	get_iso8601_time(from, sizeof(from));
+	snprintf(url, sizeof(url),
+	 		"https://api.carbonintensity.org.uk/regional/regionid/%d",
+	 		 REGION_ID);
+	return _get_intensity(url);
+}
+
 /*
  * launch_job - send an RPC to a slurmd to initiate a batch job
  * IN job_ptr - pointer to job that will be initiated
@@ -2654,33 +2815,23 @@ extern void launch_job(job_record_t *job_ptr)
 	agent_queue_request(agent_arg_ptr);
 
 	/* get current carbon emissions here */
-	sched_info("launch_current_tensityyyy\n");
-	// time_t now = time(NULL);
-	// time_t start_time = job_ptr->start_time;
+	uint32_t current_intensity = get_intensity_now();
+	info("current carbon intensity:%u\n", current_intensity);
 
-	// int i = (now - start_time) / (60*30);
-	// int current_ci = job_ptr->next_ci_24h[0];
-	// sched_info("current carbon intensity:%d \n", current_ci);
-	// info("current carbon intensity:%d \n", current_ci);
+	info("current nodes: %u %f %f %f %f %f\n ", job_ptr->num_nodes,job_ptr->power_nodes,job_ptr->em_cpu,job_ptr->em_gpu,job_ptr->em_mem);
+	info("wall time: %u \n ",job_ptr->time_limit);
 
+	// calculate launch current operational emissions
+	uint32_t walltime = job_ptr->time_limit * 60;
+	double energy = job_ptr->num_nodes * job_ptr->power_nodes * walltime;
+	double op_emissions_actual = (energy * KWH) * current_intensity;
 
+	// calculate launch current embodied emissions
+	double em_emissions_actual = job_ptr->em_emissions;
 
-	// double em_cpu = job_ptr->em_cpu;
-	// double em_gpu = job_ptr->em_gpu;
-	// double em_mem = job_ptr->em_mem;
-	// double energy = job_ptr->energy;
-	// uint32_t num_nodes = job_ptr->num_nodes;
-	// uint32_t walltime =job_ptr->time_limit * 60; 
-	// double time_share = (double)(walltime/60.);
-
-	// // calculate launch current embodied emissions
-	// double em_emissions_actual = (em_cpu + em_gpu + em_mem) * num_nodes * time_share;
-	// // calculate launch current operational emissions
-	// double op_emissions_actual = (energy * KWH) * 1;
-
-	// double actual_emissions = em_emissions_actual + op_emissions_actual;
-	// sched_info("Job scheduler actual emissions for job %s is %f", job_ptr->job_id, actual_emissions);
-	// info("Job scheduler actual emissions for job %s is %f", job_ptr->job_id, actual_emissions);
+	double actual_emissions = em_emissions_actual + op_emissions_actual;
+	info("Job scheduler actual emissions for job %s is %f", job_ptr->name, actual_emissions);
+	// info("Job scheduler actual emissions for is %f", actual_emissions);
 
 }
 

@@ -110,7 +110,7 @@ extern uint32_t priority_p_set(uint32_t last_prio, job_record_t *job_ptr)
 
 	fprintf(stderr,"In priofity plugins part \n");
 	fprintf(stderr,"carbon weight in priofity plugins:%f \n",job_ptr->carbon_weight);
-	uint32_t new_prio = 1;
+	uint32_t new_prio = 10000;
 
 	if (job_ptr->direct_set_prio && (job_ptr->priority > 1))
 		return job_ptr->priority;

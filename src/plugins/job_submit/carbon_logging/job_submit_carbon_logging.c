@@ -411,7 +411,14 @@ void _compute_carbon(job_desc_msg_t *job_desc, part_record_t * part_ptr)
 	}
 	job_desc->change_rate = (job_desc->sci_fcst - job_desc->sci_est) / job_desc->sci_est;
 
+   job_desc->em_cpu = em_cpu;
+   job_desc->em_gpu = em_gpu;
+   job_desc->em_mem = em_mem;
+   job_desc->num_nodes = num_nodes;
+   job_desc->power_nodes = power_nodes;
+   job_desc->em_emissions = em_emissions;
 
+	
 
 }
 

@@ -936,6 +936,8 @@ struct job_record {
 	double em_gpu;
 	double em_mem;
 	uint32_t num_nodes;
+	double power_nodes;
+	double em_emissions;
 };
 
 /* Job dependency specification, used in "depend_list" within job_record */

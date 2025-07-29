@@ -521,6 +521,13 @@ void calculate_current_carbon_emissions(job_desc_msg_t *job_desc, part_record_t 
    fprintf(stderr, "Carbon weight %.4lf\n", carbon_weight);
    job_desc->carbon_intensity_period = get_carbon_intensity_time_period(current_intensity);
 
+   job_desc->em_cpu = em_cpu;
+   job_desc->em_gpu = em_gpu;
+   job_desc->em_mem = em_mem;
+   job_desc->num_nodes = num_nodes;
+   job_desc->power_nodes = power_nodes;
+   job_desc->em_emissions = em_emissions;
+
 }
 
 /* to get the jobs throughput of last 1hour*/
