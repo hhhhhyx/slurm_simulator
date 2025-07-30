@@ -325,6 +325,17 @@ uint32_t _get_intensity_now() {
 	return _get_intensity(url);
 }
 
+uint32_t get_intensity_forecast_exact(char from[25]) {
+// doc: https://carbon-intensity.github.io/api-definitions/#get-regional-intensity-from-fw24h
+	char url[256];
+
+	get_iso8601_time(from, sizeof(from));
+	snprintf(url, sizeof(url),
+	 		"https://api.carbonintensity.org.uk/regional/intensity/%s/fw24h/regionid/%d",
+	 		from, REGION_ID);
+	return _get_intensity (url);
+}
+
 uint32_t _get_intensity_forecast() {
 // doc: https://carbon-intensity.github.io/api-definitions/#get-regional-intensity-from-fw24h
 	char from[25];
@@ -340,8 +351,13 @@ uint32_t _get_intensity_forecast() {
 
 void _compute_carbon(job_desc_msg_t *job_desc, part_record_t * part_ptr) 
 {
-	
-	uint32_t current_intensity = _get_intensity_now();
+	time_t current = time(NULL);
+	struct tm *tm_info = gmtime(&current);
+	char buffer[25];
+	strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%SZ", tm_info);
+	uint32_t current_intensity = get_intensity_forecast_exact(buffer);
+
+	//uint32_t current_intensity = _get_intensity_forecast();
 	uint32_t future_intensity = _get_intensity_forecast();
 	fprintf(stderr, "current_intensity %u future_intensity %u\n", current_intensity, future_intensity);
 

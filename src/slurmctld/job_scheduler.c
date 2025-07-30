@@ -2700,9 +2700,9 @@ int32_t _get_intensity(char *url) {
     }
 	//Forecast:last item else first item
 	int array_length = json_object_array_length(region_data_array);
-	json_object *first_data_item = json_object_array_get_idx(region_data_array, array_length -1);
+	//json_object *first_data_item = json_object_array_get_idx(region_data_array, array_length -1);
 	
-    //json_object *first_data_item = json_object_array_get_idx(region_data_array, 0);
+    json_object *first_data_item = json_object_array_get_idx(region_data_array, 0);
     if (!first_data_item || !json_object_is_type(first_data_item, json_type_object)) {
         fprintf(stderr, "Error: First data item is not an object\n");
         json_object_put(root_obj);
@@ -2742,16 +2742,15 @@ int32_t _get_intensity(char *url) {
 }
 
 
-static uint32_t get_intensity_now() {
-	// https://carbon-intensity.github.io/api-definitions/#get-regional-regionid-regionid
-	char from[25];
+static uint32_t get_intensity_forecast(char from[25]) {
+// doc: https://carbon-intensity.github.io/api-definitions/#get-regional-intensity-from-fw24h
 	char url[256];
 
 	get_iso8601_time(from, sizeof(from));
 	snprintf(url, sizeof(url),
-	 		"https://api.carbonintensity.org.uk/regional/regionid/%d",
-	 		 REGION_ID);
-	return _get_intensity(url);
+	 		"https://api.carbonintensity.org.uk/regional/intensity/%s/fw24h/regionid/%d",
+	 		from, REGION_ID);
+	return _get_intensity (url);
 }
 
 /*
@@ -2814,8 +2813,12 @@ extern void launch_job(job_record_t *job_ptr)
 	/* Launch the RPC via agent */
 	agent_queue_request(agent_arg_ptr);
 
-	/* get current carbon emissions here */
-	uint32_t current_intensity = get_intensity_now();
+	time_t current = last_job_update;
+	struct tm *tm_info = gmtime(&current);
+	char buffer[25];
+	strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%SZ", tm_info);
+	uint32_t current_intensity = get_intensity_forecast(buffer);
+	info("current carbon intensity time:%s\n", buffer);
 	info("current carbon intensity:%u\n", current_intensity);
 
 	info("current nodes: %u %f %f %f %f %f\n ", job_ptr->num_nodes,job_ptr->power_nodes,job_ptr->em_cpu,job_ptr->em_gpu,job_ptr->em_mem);

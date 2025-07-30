@@ -83,7 +83,7 @@ int slurmctld_tres_cnt = 0;
  * (major.minor.micro combined into a single number).
  */
 const char plugin_name[]       	= "Priority BASIC plugin";
-const char plugin_type[]       	= "priority/basic";
+const char plugin_type[]       	= "priority/carbon";
 const uint32_t plugin_version	= SLURM_VERSION_NUMBER;
 
 /*
@@ -108,13 +108,53 @@ int fini ( void )
 extern uint32_t priority_p_set(uint32_t last_prio, job_record_t *job_ptr)
 {
 
-	uint32_t new_prio = 1;
+	fprintf(stderr,"In priofity plugins part \n");
+	fprintf(stderr,"carbon weight in priofity plugins:%f \n",job_ptr->carbon_weight);
+	uint32_t new_prio = 10000;
 
 	if (job_ptr->direct_set_prio && (job_ptr->priority > 1))
 		return job_ptr->priority;
 
 	if (last_prio >= 2)
 		new_prio = (last_prio - 1);
+
+
+
+	time_t start_time = job_ptr->start_time;
+    time(&start_time); 
+   	printf("start_time: %s", ctime(&start_time));
+	time(&job_ptr->details->submit_time);
+	printf("submit_time: %s", ctime(&job_ptr->details->submit_time));
+
+	time_t wait_time = start_time - job_ptr->details->submit_time;
+	uint32_t wall_time =job_ptr->time_limit * 60;
+
+	if(wait_time == 0) {
+		wait_time = 1;
+	}
+	
+	double time_weight = (double)wait_time/wall_time;  //calculate the time_weight
+
+	/* get jobs throughput of previous 1 hour */
+	int one_hour_ago_throughput = job_ptr->one_hour_ago_job_throughput;
+
+
+	fprintf(stderr,"In priority carbon_weight: %f, system_throughput: %d, wall_time: %u, wait_time: %d\n",job_ptr->carbon_weight,job_ptr->one_hour_ago_job_throughput, job_ptr->time_limit *60, wait_time);
+
+	/* calculate the new priority */
+	switch (job_ptr->carbon_intensity_period)
+	{
+		case CI_LOW:
+			new_prio = new_prio * (time_weight/(one_hour_ago_throughput+EPSILON) + 1 * (1 - job_ptr->carbon_weight));
+			break;
+		case CI_HIGH:
+			new_prio = new_prio * (time_weight/(one_hour_ago_throughput+EPSILON) + 0.5 * (1 - job_ptr->carbon_weight));
+		default:
+			new_prio = new_prio * (time_weight/(one_hour_ago_throughput+EPSILON) + 0.1 * (1 - job_ptr->carbon_weight));
+			break;
+	}
+
+
 
 	if (job_ptr->details) {
 	int offset = job_ptr->details->nice;
@@ -127,6 +167,8 @@ extern uint32_t priority_p_set(uint32_t last_prio, job_record_t *job_ptr)
 	if (new_prio < 1)
 		new_prio = 1;
 
+	fprintf(stderr,"new priority: %u\n",new_prio);
+	logpe2("initial priority for job %u is %u", job_ptr->job_id, new_prio);
 	return new_prio;
 }
 

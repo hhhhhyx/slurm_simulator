@@ -443,8 +443,8 @@ void calculate_current_carbon_emissions(job_desc_msg_t *job_desc, part_record_t 
    int ci_max_1h = MAX(next_1h_ci.items[0].intensity,next_1h_ci.items[1].intensity);
    fprintf(stderr,"ci_max_1h: %u\n", ci_max_1h);
    //get current ci
-   ci_data_array current_ci_info = get_currentt_carbon_intensity_info();
-   int current_intensity = current_ci_info.items[0].intensity;
+   // ci_data_array current_ci_info = get_currentt_carbon_intensity_info();
+   int current_intensity = next_24h_ci.items[0].intensity;
    fprintf(stderr,"current_tensity: %u\n", current_intensity);
 
 
@@ -585,51 +585,114 @@ int count_completed_jobs_in_log(const char *filename) {
 	return count;
 }
 
+time_t parse_endtime(const char* end_str) {
+    struct tm tm;
+    memset(&tm, 0, sizeof(struct tm));
+    strptime(end_str, "%Y-%m-%dT%H:%M:%S", &tm);
+    return mktime(&tm);
+}
+
+int is_within_past_hour(time_t job_end) {
+   time_t now = time(NULL);
+   struct tm *tm_info = gmtime(&now);
+   char buffer[25];
+   strftime(buffer, sizeof(buffer), "%Y-%m-%dT%H:%M:%SZ", tm_info);
+   return difftime(now, job_end) <= 3600 && difftime(now, job_end) >= 0;
+}
+
 //to count all completed jobs in all logs of last 1 hour
-int count_total_jobs() {
-	DIR *dir;
-	struct dirent *entry;
-	struct stat file_stat;
-	time_t now = time(NULL);
-	time_t one_hour_ago = now - 3600;
-	int total_complted_jobs = 0;
-	char path[MAX_FILENAME];
+// int count_total_jobs() {
+// 	DIR *dir;
+// 	struct dirent *entry;
+// 	struct stat file_stat;
+// 	time_t now = time(NULL);
+// 	time_t one_hour_ago = now - 3600;
+// 	int total_complted_jobs = 0;
+// 	char path[MAX_FILENAME];
 
-	dir = opendir(LOG_DIR);
-	info("Directory is : %s", LOG_DIR);
-	if(dir == NULL) {
-		perror("Directory dosen't exist!");
-		info("Directory dosen't exist: %s", LOG_DIR);
-		return EXIT_FAILURE;
-	}
+// 	dir = opendir(LOG_DIR);
+// 	info("Directory is : %s", LOG_DIR);
+// 	if(dir == NULL) {
+// 		perror("Directory dosen't exist!");
+// 		info("Directory dosen't exist: %s", LOG_DIR);
+// 		return EXIT_FAILURE;
+// 	}
 	
-	while ((entry = readdir(dir))!=NULL) {
-		if (!is_valid_logfile(entry->d_name)) {
-		}
+// 	while ((entry = readdir(dir))!=NULL) {
+// 		if (!is_valid_logfile(entry->d_name)) {
+// 		}
 
-		snprintf(path,sizeof(path), "%s/%s", LOG_DIR, entry->d_name);
-		//fprintf(stderr,"path: %s\n", path);
-		if (stat(path, &file_stat) != 0) {
-			perror("Error file stats");
-			continue;
-		}
+// 		snprintf(path,sizeof(path), "%s/%s", LOG_DIR, entry->d_name);
+// 		//fprintf(stderr,"path: %s\n", path);
+// 		if (stat(path, &file_stat) != 0) {
+// 			perror("Error file stats");
+// 			continue;
+// 		}
 		
-		time_t file_time = extract_timestamp(entry->d_name);
-		if (file_time == -1) {
-			continue;
-		}
+// 		time_t file_time = extract_timestamp(entry->d_name);
+// 		if (file_time == -1) {
+// 			continue;
+// 		}
 
-		//fprintf(stderr,"target filename: %s\n", path);
-		// add 1 hour ago jobs count
-		if(file_time >= one_hour_ago && file_time <=now) {
-			int count = count_completed_jobs_in_log(path);
-			//fprintf(stderr, "%s : %u completed jobs\n", entry->d_name,count);
-			total_complted_jobs += count;
-		}
-	}
+// 		//fprintf(stderr,"target filename: %s\n", path);
+// 		// add 1 hour ago jobs count
+// 		if(file_time >= one_hour_ago && file_time <=now) {
+// 			int count = count_completed_jobs_in_log(path);
+// 			//fprintf(stderr, "%s : %u completed jobs\n", entry->d_name,count);
+// 			total_complted_jobs += count;
+// 		}
+// 	}
 
-	closedir(dir);
-	return total_complted_jobs;
+// 	closedir(dir);
+// 	return total_complted_jobs;
+// }
+
+int count_total_jobs() {
+    DIR *dir;
+    struct dirent *entry;
+    int total_jobs = 0;
+
+    dir = opendir(LOG_DIR);
+    if (!dir) {
+        perror("Failed to open job directory");
+        return -1;
+    }
+
+    while ((entry = readdir(dir)) != NULL) {
+        if (entry->d_type != DT_REG || !strstr(entry->d_name, ".log")) continue;
+
+        char filepath[MAX_FILENAME];
+        snprintf(filepath, sizeof(filepath), "%s/%s", LOG_DIR, entry->d_name);
+
+        FILE *fp = fopen(filepath, "r");
+        if (!fp) {
+            perror("Failed to open log file");
+            continue;
+        }
+
+        char line[MAX_LINE];
+        while (fgets(line, sizeof(line), fp)) {
+            if (strstr(line, "EndTime=") && strstr(line, "JobState=COMPLETED")) {
+                char *end_ptr = strstr(line, "EndTime=");
+                if (end_ptr) {
+                    char end_str[32];
+                    sscanf(end_ptr + 8, "%31s", end_str);
+                    char *newline = strchr(end_str, '\n');
+                    if (newline) *newline = '\0';
+
+                    time_t end_time = parse_endtime(end_str);
+                    if (is_within_past_hour(end_time)) {
+                        total_jobs++;
+                    }
+                }
+            }
+        }
+
+        fclose(fp);
+    }
+
+    closedir(dir);
+    return total_jobs;
 }
 
 
