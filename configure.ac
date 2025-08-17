@@ -22,7 +22,7 @@ dnl
 dnl If you ever change to use AM_INIT_AUTOMAKE(subdir-objects) edit
 dnl auxdir/slurm.m4 to not define VERSION
 dnl
-AM_INIT_AUTOMAKE(no-define no-dist)
+AM_INIT_AUTOMAKE(no-define no-dist subdir-objects)
 AM_MAINTAINER_MODE
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_HEADERS([slurm/slurm_version.h])
@@ -550,6 +550,7 @@ AC_CONFIG_FILES([Makefile
 		 src/plugins/prep/script/Makefile
 		 src/plugins/priority/Makefile
 		 src/plugins/priority/basic/Makefile
+		 src/plugins/priority/carbon/Makefile
 		 src/plugins/priority/multifactor/Makefile
 		 src/plugins/proctrack/Makefile
 		 src/plugins/proctrack/cgroup/Makefile

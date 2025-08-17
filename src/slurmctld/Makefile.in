@@ -181,17 +181,18 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(sbindir)"
 PROGRAMS = $(sbin_PROGRAMS)
-@ENABLE_SIMULATOR_TRUE@am__objects_1 = slurmctld-sim_events.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-sim_jobs.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-sim_sbatch.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-opt.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-xlate.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-sim_slurmd.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-sim_slurmd_req.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-sim_slurmd_get_mach_stat.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-slurmctld_controller.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-slurmctld_agent.$(OBJEXT) \
-@ENABLE_SIMULATOR_TRUE@	slurmctld-slurmctld_job_scheduler.$(OBJEXT)
+am__dirstamp = $(am__leading_dot)dirstamp
+@ENABLE_SIMULATOR_TRUE@am__objects_1 = ../../contribs/sim/slurmctld-sim_events.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-sim_jobs.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-sim_sbatch.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../sbatch/slurmctld-opt.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../sbatch/slurmctld-xlate.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-sim_slurmd.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-sim_slurmd_req.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-slurmctld_controller.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-slurmctld_agent.$(OBJEXT) \
+@ENABLE_SIMULATOR_TRUE@	../../contribs/sim/slurmctld-slurmctld_job_scheduler.$(OBJEXT)
 @ENABLE_SIMULATOR_FALSE@am__objects_2 =  \
 @ENABLE_SIMULATOR_FALSE@	slurmctld-controller.$(OBJEXT) \
 @ENABLE_SIMULATOR_FALSE@	slurmctld-agent.$(OBJEXT) \
@@ -247,7 +248,19 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I$(top_builddir)/slurm
 depcomp = $(SHELL) $(top_srcdir)/auxdir/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/slurmctld-acct_policy.Po \
+am__depfiles_remade =  \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po \
+	../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po \
+	../sbatch/$(DEPDIR)/slurmctld-opt.Po \
+	../sbatch/$(DEPDIR)/slurmctld-xlate.Po \
+	./$(DEPDIR)/slurmctld-acct_policy.Po \
 	./$(DEPDIR)/slurmctld-agent.Po ./$(DEPDIR)/slurmctld-backup.Po \
 	./$(DEPDIR)/slurmctld-controller.Po \
 	./$(DEPDIR)/slurmctld-crontab.Po \
@@ -263,7 +276,6 @@ am__depfiles_remade = ./$(DEPDIR)/slurmctld-acct_policy.Po \
 	./$(DEPDIR)/slurmctld-locks.Po \
 	./$(DEPDIR)/slurmctld-node_mgr.Po \
 	./$(DEPDIR)/slurmctld-node_scheduler.Po \
-	./$(DEPDIR)/slurmctld-opt.Po \
 	./$(DEPDIR)/slurmctld-partition_mgr.Po \
 	./$(DEPDIR)/slurmctld-ping_nodes.Po \
 	./$(DEPDIR)/slurmctld-port_mgr.Po \
@@ -274,15 +286,6 @@ am__depfiles_remade = ./$(DEPDIR)/slurmctld-acct_policy.Po \
 	./$(DEPDIR)/slurmctld-read_config.Po \
 	./$(DEPDIR)/slurmctld-reservation.Po \
 	./$(DEPDIR)/slurmctld-rpc_queue.Po \
-	./$(DEPDIR)/slurmctld-sim_events.Po \
-	./$(DEPDIR)/slurmctld-sim_jobs.Po \
-	./$(DEPDIR)/slurmctld-sim_sbatch.Po \
-	./$(DEPDIR)/slurmctld-sim_slurmd.Po \
-	./$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po \
-	./$(DEPDIR)/slurmctld-sim_slurmd_req.Po \
-	./$(DEPDIR)/slurmctld-slurmctld_agent.Po \
-	./$(DEPDIR)/slurmctld-slurmctld_controller.Po \
-	./$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po \
 	./$(DEPDIR)/slurmctld-slurmscriptd.Po \
 	./$(DEPDIR)/slurmctld-slurmscriptd_protocol_defs.Po \
 	./$(DEPDIR)/slurmctld-slurmscriptd_protocol_pack.Po \
@@ -290,8 +293,7 @@ am__depfiles_remade = ./$(DEPDIR)/slurmctld-acct_policy.Po \
 	./$(DEPDIR)/slurmctld-state_save.Po \
 	./$(DEPDIR)/slurmctld-statistics.Po \
 	./$(DEPDIR)/slurmctld-step_mgr.Po \
-	./$(DEPDIR)/slurmctld-trigger_mgr.Po \
-	./$(DEPDIR)/slurmctld-xlate.Po
+	./$(DEPDIR)/slurmctld-trigger_mgr.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -712,6 +714,49 @@ clean-sbinPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+../../contribs/sim/$(am__dirstamp):
+	@$(MKDIR_P) ../../contribs/sim
+	@: > ../../contribs/sim/$(am__dirstamp)
+../../contribs/sim/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../../contribs/sim/$(DEPDIR)
+	@: > ../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_events.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_jobs.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_sbatch.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../sbatch/$(am__dirstamp):
+	@$(MKDIR_P) ../sbatch
+	@: > ../sbatch/$(am__dirstamp)
+../sbatch/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) ../sbatch/$(DEPDIR)
+	@: > ../sbatch/$(DEPDIR)/$(am__dirstamp)
+../sbatch/slurmctld-opt.$(OBJEXT): ../sbatch/$(am__dirstamp) \
+	../sbatch/$(DEPDIR)/$(am__dirstamp)
+../sbatch/slurmctld-xlate.$(OBJEXT): ../sbatch/$(am__dirstamp) \
+	../sbatch/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_slurmd.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_slurmd_req.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-slurmctld_controller.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-slurmctld_agent.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+../../contribs/sim/slurmctld-slurmctld_job_scheduler.$(OBJEXT):  \
+	../../contribs/sim/$(am__dirstamp) \
+	../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
 
 slurmctld$(EXEEXT): $(slurmctld_OBJECTS) $(slurmctld_DEPENDENCIES) $(EXTRA_slurmctld_DEPENDENCIES) 
 	@rm -f slurmctld$(EXEEXT)
@@ -719,10 +764,23 @@ slurmctld$(EXEEXT): $(slurmctld_OBJECTS) $(slurmctld_DEPENDENCIES) $(EXTRA_slurm
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
+	-rm -f ../../contribs/sim/*.$(OBJEXT)
+	-rm -f ../sbatch/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../sbatch/$(DEPDIR)/slurmctld-opt.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@../sbatch/$(DEPDIR)/slurmctld-xlate.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-acct_policy.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-agent.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-backup.Po@am__quote@ # am--include-marker
@@ -740,7 +798,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-locks.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-node_mgr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-node_scheduler.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-opt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-partition_mgr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-ping_nodes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-port_mgr.Po@am__quote@ # am--include-marker
@@ -751,15 +808,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-read_config.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-reservation.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-rpc_queue.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_events.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_jobs.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_sbatch.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_slurmd.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-sim_slurmd_req.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmctld_agent.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmctld_controller.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmscriptd.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmscriptd_protocol_defs.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-slurmscriptd_protocol_pack.Po@am__quote@ # am--include-marker
@@ -768,7 +816,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-statistics.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-step_mgr.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-trigger_mgr.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slurmctld-xlate.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -777,22 +824,25 @@ $(am__depfiles_remade):
 am--depfiles: $(am__depfiles_remade)
 
 .c.o:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ $<
 
 .c.obj:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+@am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Po
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(COMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .c.lo:
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+@am__fastdepCC_TRUE@	$(am__mv) $$depbase.Tpo $$depbase.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
@@ -1245,159 +1295,159 @@ slurmctld-trigger_mgr.obj: trigger_mgr.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-trigger_mgr.obj `if test -f 'trigger_mgr.c'; then $(CYGPATH_W) 'trigger_mgr.c'; else $(CYGPATH_W) '$(srcdir)/trigger_mgr.c'; fi`
 
-slurmctld-sim_events.o: ../../contribs/sim/sim_events.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_events.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_events.Tpo -c -o slurmctld-sim_events.o `test -f '../../contribs/sim/sim_events.c' || echo '$(srcdir)/'`../../contribs/sim/sim_events.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_events.Tpo $(DEPDIR)/slurmctld-sim_events.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_events.c' object='slurmctld-sim_events.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_events.o: ../../contribs/sim/sim_events.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_events.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Tpo -c -o ../../contribs/sim/slurmctld-sim_events.o `test -f '../../contribs/sim/sim_events.c' || echo '$(srcdir)/'`../../contribs/sim/sim_events.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_events.c' object='../../contribs/sim/slurmctld-sim_events.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_events.o `test -f '../../contribs/sim/sim_events.c' || echo '$(srcdir)/'`../../contribs/sim/sim_events.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_events.o `test -f '../../contribs/sim/sim_events.c' || echo '$(srcdir)/'`../../contribs/sim/sim_events.c
 
-slurmctld-sim_events.obj: ../../contribs/sim/sim_events.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_events.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_events.Tpo -c -o slurmctld-sim_events.obj `if test -f '../../contribs/sim/sim_events.c'; then $(CYGPATH_W) '../../contribs/sim/sim_events.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_events.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_events.Tpo $(DEPDIR)/slurmctld-sim_events.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_events.c' object='slurmctld-sim_events.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_events.obj: ../../contribs/sim/sim_events.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_events.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Tpo -c -o ../../contribs/sim/slurmctld-sim_events.obj `if test -f '../../contribs/sim/sim_events.c'; then $(CYGPATH_W) '../../contribs/sim/sim_events.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_events.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_events.c' object='../../contribs/sim/slurmctld-sim_events.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_events.obj `if test -f '../../contribs/sim/sim_events.c'; then $(CYGPATH_W) '../../contribs/sim/sim_events.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_events.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_events.obj `if test -f '../../contribs/sim/sim_events.c'; then $(CYGPATH_W) '../../contribs/sim/sim_events.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_events.c'; fi`
 
-slurmctld-sim_jobs.o: ../../contribs/sim/sim_jobs.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_jobs.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_jobs.Tpo -c -o slurmctld-sim_jobs.o `test -f '../../contribs/sim/sim_jobs.c' || echo '$(srcdir)/'`../../contribs/sim/sim_jobs.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_jobs.Tpo $(DEPDIR)/slurmctld-sim_jobs.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_jobs.c' object='slurmctld-sim_jobs.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_jobs.o: ../../contribs/sim/sim_jobs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_jobs.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Tpo -c -o ../../contribs/sim/slurmctld-sim_jobs.o `test -f '../../contribs/sim/sim_jobs.c' || echo '$(srcdir)/'`../../contribs/sim/sim_jobs.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_jobs.c' object='../../contribs/sim/slurmctld-sim_jobs.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_jobs.o `test -f '../../contribs/sim/sim_jobs.c' || echo '$(srcdir)/'`../../contribs/sim/sim_jobs.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_jobs.o `test -f '../../contribs/sim/sim_jobs.c' || echo '$(srcdir)/'`../../contribs/sim/sim_jobs.c
 
-slurmctld-sim_jobs.obj: ../../contribs/sim/sim_jobs.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_jobs.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_jobs.Tpo -c -o slurmctld-sim_jobs.obj `if test -f '../../contribs/sim/sim_jobs.c'; then $(CYGPATH_W) '../../contribs/sim/sim_jobs.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_jobs.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_jobs.Tpo $(DEPDIR)/slurmctld-sim_jobs.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_jobs.c' object='slurmctld-sim_jobs.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_jobs.obj: ../../contribs/sim/sim_jobs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_jobs.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Tpo -c -o ../../contribs/sim/slurmctld-sim_jobs.obj `if test -f '../../contribs/sim/sim_jobs.c'; then $(CYGPATH_W) '../../contribs/sim/sim_jobs.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_jobs.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_jobs.c' object='../../contribs/sim/slurmctld-sim_jobs.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_jobs.obj `if test -f '../../contribs/sim/sim_jobs.c'; then $(CYGPATH_W) '../../contribs/sim/sim_jobs.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_jobs.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_jobs.obj `if test -f '../../contribs/sim/sim_jobs.c'; then $(CYGPATH_W) '../../contribs/sim/sim_jobs.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_jobs.c'; fi`
 
-slurmctld-sim_sbatch.o: ../../contribs/sim/sim_sbatch.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_sbatch.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_sbatch.Tpo -c -o slurmctld-sim_sbatch.o `test -f '../../contribs/sim/sim_sbatch.c' || echo '$(srcdir)/'`../../contribs/sim/sim_sbatch.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_sbatch.Tpo $(DEPDIR)/slurmctld-sim_sbatch.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_sbatch.c' object='slurmctld-sim_sbatch.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_sbatch.o: ../../contribs/sim/sim_sbatch.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_sbatch.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Tpo -c -o ../../contribs/sim/slurmctld-sim_sbatch.o `test -f '../../contribs/sim/sim_sbatch.c' || echo '$(srcdir)/'`../../contribs/sim/sim_sbatch.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_sbatch.c' object='../../contribs/sim/slurmctld-sim_sbatch.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_sbatch.o `test -f '../../contribs/sim/sim_sbatch.c' || echo '$(srcdir)/'`../../contribs/sim/sim_sbatch.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_sbatch.o `test -f '../../contribs/sim/sim_sbatch.c' || echo '$(srcdir)/'`../../contribs/sim/sim_sbatch.c
 
-slurmctld-sim_sbatch.obj: ../../contribs/sim/sim_sbatch.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_sbatch.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_sbatch.Tpo -c -o slurmctld-sim_sbatch.obj `if test -f '../../contribs/sim/sim_sbatch.c'; then $(CYGPATH_W) '../../contribs/sim/sim_sbatch.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_sbatch.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_sbatch.Tpo $(DEPDIR)/slurmctld-sim_sbatch.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_sbatch.c' object='slurmctld-sim_sbatch.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_sbatch.obj: ../../contribs/sim/sim_sbatch.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_sbatch.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Tpo -c -o ../../contribs/sim/slurmctld-sim_sbatch.obj `if test -f '../../contribs/sim/sim_sbatch.c'; then $(CYGPATH_W) '../../contribs/sim/sim_sbatch.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_sbatch.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_sbatch.c' object='../../contribs/sim/slurmctld-sim_sbatch.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_sbatch.obj `if test -f '../../contribs/sim/sim_sbatch.c'; then $(CYGPATH_W) '../../contribs/sim/sim_sbatch.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_sbatch.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_sbatch.obj `if test -f '../../contribs/sim/sim_sbatch.c'; then $(CYGPATH_W) '../../contribs/sim/sim_sbatch.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_sbatch.c'; fi`
 
-slurmctld-opt.o: ../sbatch/opt.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-opt.o -MD -MP -MF $(DEPDIR)/slurmctld-opt.Tpo -c -o slurmctld-opt.o `test -f '../sbatch/opt.c' || echo '$(srcdir)/'`../sbatch/opt.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-opt.Tpo $(DEPDIR)/slurmctld-opt.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/opt.c' object='slurmctld-opt.o' libtool=no @AMDEPBACKSLASH@
+../sbatch/slurmctld-opt.o: ../sbatch/opt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../sbatch/slurmctld-opt.o -MD -MP -MF ../sbatch/$(DEPDIR)/slurmctld-opt.Tpo -c -o ../sbatch/slurmctld-opt.o `test -f '../sbatch/opt.c' || echo '$(srcdir)/'`../sbatch/opt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../sbatch/$(DEPDIR)/slurmctld-opt.Tpo ../sbatch/$(DEPDIR)/slurmctld-opt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/opt.c' object='../sbatch/slurmctld-opt.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-opt.o `test -f '../sbatch/opt.c' || echo '$(srcdir)/'`../sbatch/opt.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../sbatch/slurmctld-opt.o `test -f '../sbatch/opt.c' || echo '$(srcdir)/'`../sbatch/opt.c
 
-slurmctld-opt.obj: ../sbatch/opt.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-opt.obj -MD -MP -MF $(DEPDIR)/slurmctld-opt.Tpo -c -o slurmctld-opt.obj `if test -f '../sbatch/opt.c'; then $(CYGPATH_W) '../sbatch/opt.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/opt.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-opt.Tpo $(DEPDIR)/slurmctld-opt.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/opt.c' object='slurmctld-opt.obj' libtool=no @AMDEPBACKSLASH@
+../sbatch/slurmctld-opt.obj: ../sbatch/opt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../sbatch/slurmctld-opt.obj -MD -MP -MF ../sbatch/$(DEPDIR)/slurmctld-opt.Tpo -c -o ../sbatch/slurmctld-opt.obj `if test -f '../sbatch/opt.c'; then $(CYGPATH_W) '../sbatch/opt.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/opt.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../sbatch/$(DEPDIR)/slurmctld-opt.Tpo ../sbatch/$(DEPDIR)/slurmctld-opt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/opt.c' object='../sbatch/slurmctld-opt.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-opt.obj `if test -f '../sbatch/opt.c'; then $(CYGPATH_W) '../sbatch/opt.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/opt.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../sbatch/slurmctld-opt.obj `if test -f '../sbatch/opt.c'; then $(CYGPATH_W) '../sbatch/opt.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/opt.c'; fi`
 
-slurmctld-xlate.o: ../sbatch/xlate.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-xlate.o -MD -MP -MF $(DEPDIR)/slurmctld-xlate.Tpo -c -o slurmctld-xlate.o `test -f '../sbatch/xlate.c' || echo '$(srcdir)/'`../sbatch/xlate.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-xlate.Tpo $(DEPDIR)/slurmctld-xlate.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/xlate.c' object='slurmctld-xlate.o' libtool=no @AMDEPBACKSLASH@
+../sbatch/slurmctld-xlate.o: ../sbatch/xlate.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../sbatch/slurmctld-xlate.o -MD -MP -MF ../sbatch/$(DEPDIR)/slurmctld-xlate.Tpo -c -o ../sbatch/slurmctld-xlate.o `test -f '../sbatch/xlate.c' || echo '$(srcdir)/'`../sbatch/xlate.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../sbatch/$(DEPDIR)/slurmctld-xlate.Tpo ../sbatch/$(DEPDIR)/slurmctld-xlate.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/xlate.c' object='../sbatch/slurmctld-xlate.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-xlate.o `test -f '../sbatch/xlate.c' || echo '$(srcdir)/'`../sbatch/xlate.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../sbatch/slurmctld-xlate.o `test -f '../sbatch/xlate.c' || echo '$(srcdir)/'`../sbatch/xlate.c
 
-slurmctld-xlate.obj: ../sbatch/xlate.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-xlate.obj -MD -MP -MF $(DEPDIR)/slurmctld-xlate.Tpo -c -o slurmctld-xlate.obj `if test -f '../sbatch/xlate.c'; then $(CYGPATH_W) '../sbatch/xlate.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/xlate.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-xlate.Tpo $(DEPDIR)/slurmctld-xlate.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/xlate.c' object='slurmctld-xlate.obj' libtool=no @AMDEPBACKSLASH@
+../sbatch/slurmctld-xlate.obj: ../sbatch/xlate.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../sbatch/slurmctld-xlate.obj -MD -MP -MF ../sbatch/$(DEPDIR)/slurmctld-xlate.Tpo -c -o ../sbatch/slurmctld-xlate.obj `if test -f '../sbatch/xlate.c'; then $(CYGPATH_W) '../sbatch/xlate.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/xlate.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../sbatch/$(DEPDIR)/slurmctld-xlate.Tpo ../sbatch/$(DEPDIR)/slurmctld-xlate.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../sbatch/xlate.c' object='../sbatch/slurmctld-xlate.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-xlate.obj `if test -f '../sbatch/xlate.c'; then $(CYGPATH_W) '../sbatch/xlate.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/xlate.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../sbatch/slurmctld-xlate.obj `if test -f '../sbatch/xlate.c'; then $(CYGPATH_W) '../sbatch/xlate.c'; else $(CYGPATH_W) '$(srcdir)/../sbatch/xlate.c'; fi`
 
-slurmctld-sim_slurmd.o: ../../contribs/sim/sim_slurmd.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd.Tpo -c -o slurmctld-sim_slurmd.o `test -f '../../contribs/sim/sim_slurmd.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd.Tpo $(DEPDIR)/slurmctld-sim_slurmd.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd.c' object='slurmctld-sim_slurmd.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd.o: ../../contribs/sim/sim_slurmd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd.o `test -f '../../contribs/sim/sim_slurmd.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd.c' object='../../contribs/sim/slurmctld-sim_slurmd.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd.o `test -f '../../contribs/sim/sim_slurmd.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd.o `test -f '../../contribs/sim/sim_slurmd.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd.c
 
-slurmctld-sim_slurmd.obj: ../../contribs/sim/sim_slurmd.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd.Tpo -c -o slurmctld-sim_slurmd.obj `if test -f '../../contribs/sim/sim_slurmd.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd.Tpo $(DEPDIR)/slurmctld-sim_slurmd.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd.c' object='slurmctld-sim_slurmd.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd.obj: ../../contribs/sim/sim_slurmd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd.obj `if test -f '../../contribs/sim/sim_slurmd.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd.c' object='../../contribs/sim/slurmctld-sim_slurmd.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd.obj `if test -f '../../contribs/sim/sim_slurmd.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd.obj `if test -f '../../contribs/sim/sim_slurmd.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd.c'; fi`
 
-slurmctld-sim_slurmd_req.o: ../../contribs/sim/sim_slurmd_req.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd_req.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd_req.Tpo -c -o slurmctld-sim_slurmd_req.o `test -f '../../contribs/sim/sim_slurmd_req.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_req.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd_req.Tpo $(DEPDIR)/slurmctld-sim_slurmd_req.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_req.c' object='slurmctld-sim_slurmd_req.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd_req.o: ../../contribs/sim/sim_slurmd_req.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd_req.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd_req.o `test -f '../../contribs/sim/sim_slurmd_req.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_req.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_req.c' object='../../contribs/sim/slurmctld-sim_slurmd_req.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd_req.o `test -f '../../contribs/sim/sim_slurmd_req.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_req.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd_req.o `test -f '../../contribs/sim/sim_slurmd_req.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_req.c
 
-slurmctld-sim_slurmd_req.obj: ../../contribs/sim/sim_slurmd_req.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd_req.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd_req.Tpo -c -o slurmctld-sim_slurmd_req.obj `if test -f '../../contribs/sim/sim_slurmd_req.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_req.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_req.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd_req.Tpo $(DEPDIR)/slurmctld-sim_slurmd_req.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_req.c' object='slurmctld-sim_slurmd_req.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd_req.obj: ../../contribs/sim/sim_slurmd_req.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd_req.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd_req.obj `if test -f '../../contribs/sim/sim_slurmd_req.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_req.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_req.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_req.c' object='../../contribs/sim/slurmctld-sim_slurmd_req.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd_req.obj `if test -f '../../contribs/sim/sim_slurmd_req.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_req.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_req.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd_req.obj `if test -f '../../contribs/sim/sim_slurmd_req.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_req.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_req.c'; fi`
 
-slurmctld-sim_slurmd_get_mach_stat.o: ../../contribs/sim/sim_slurmd_get_mach_stat.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd_get_mach_stat.o -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo -c -o slurmctld-sim_slurmd_get_mach_stat.o `test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_get_mach_stat.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_get_mach_stat.c' object='slurmctld-sim_slurmd_get_mach_stat.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.o: ../../contribs/sim/sim_slurmd_get_mach_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.o `test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_get_mach_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_get_mach_stat.c' object='../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd_get_mach_stat.o `test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_get_mach_stat.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.o `test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c' || echo '$(srcdir)/'`../../contribs/sim/sim_slurmd_get_mach_stat.c
 
-slurmctld-sim_slurmd_get_mach_stat.obj: ../../contribs/sim/sim_slurmd_get_mach_stat.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-sim_slurmd_get_mach_stat.obj -MD -MP -MF $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo -c -o slurmctld-sim_slurmd_get_mach_stat.obj `if test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_get_mach_stat.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_get_mach_stat.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo $(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_get_mach_stat.c' object='slurmctld-sim_slurmd_get_mach_stat.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.obj: ../../contribs/sim/sim_slurmd_get_mach_stat.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo -c -o ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.obj `if test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_get_mach_stat.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_get_mach_stat.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/sim_slurmd_get_mach_stat.c' object='../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-sim_slurmd_get_mach_stat.obj `if test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_get_mach_stat.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_get_mach_stat.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-sim_slurmd_get_mach_stat.obj `if test -f '../../contribs/sim/sim_slurmd_get_mach_stat.c'; then $(CYGPATH_W) '../../contribs/sim/sim_slurmd_get_mach_stat.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/sim_slurmd_get_mach_stat.c'; fi`
 
-slurmctld-slurmctld_controller.o: ../../contribs/sim/slurmctld_controller.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_controller.o -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_controller.Tpo -c -o slurmctld-slurmctld_controller.o `test -f '../../contribs/sim/slurmctld_controller.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_controller.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_controller.Tpo $(DEPDIR)/slurmctld-slurmctld_controller.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_controller.c' object='slurmctld-slurmctld_controller.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_controller.o: ../../contribs/sim/slurmctld_controller.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_controller.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_controller.o `test -f '../../contribs/sim/slurmctld_controller.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_controller.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_controller.c' object='../../contribs/sim/slurmctld-slurmctld_controller.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_controller.o `test -f '../../contribs/sim/slurmctld_controller.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_controller.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_controller.o `test -f '../../contribs/sim/slurmctld_controller.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_controller.c
 
-slurmctld-slurmctld_controller.obj: ../../contribs/sim/slurmctld_controller.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_controller.obj -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_controller.Tpo -c -o slurmctld-slurmctld_controller.obj `if test -f '../../contribs/sim/slurmctld_controller.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_controller.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_controller.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_controller.Tpo $(DEPDIR)/slurmctld-slurmctld_controller.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_controller.c' object='slurmctld-slurmctld_controller.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_controller.obj: ../../contribs/sim/slurmctld_controller.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_controller.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_controller.obj `if test -f '../../contribs/sim/slurmctld_controller.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_controller.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_controller.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_controller.c' object='../../contribs/sim/slurmctld-slurmctld_controller.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_controller.obj `if test -f '../../contribs/sim/slurmctld_controller.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_controller.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_controller.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_controller.obj `if test -f '../../contribs/sim/slurmctld_controller.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_controller.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_controller.c'; fi`
 
-slurmctld-slurmctld_agent.o: ../../contribs/sim/slurmctld_agent.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_agent.o -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_agent.Tpo -c -o slurmctld-slurmctld_agent.o `test -f '../../contribs/sim/slurmctld_agent.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_agent.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_agent.Tpo $(DEPDIR)/slurmctld-slurmctld_agent.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_agent.c' object='slurmctld-slurmctld_agent.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_agent.o: ../../contribs/sim/slurmctld_agent.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_agent.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_agent.o `test -f '../../contribs/sim/slurmctld_agent.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_agent.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_agent.c' object='../../contribs/sim/slurmctld-slurmctld_agent.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_agent.o `test -f '../../contribs/sim/slurmctld_agent.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_agent.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_agent.o `test -f '../../contribs/sim/slurmctld_agent.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_agent.c
 
-slurmctld-slurmctld_agent.obj: ../../contribs/sim/slurmctld_agent.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_agent.obj -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_agent.Tpo -c -o slurmctld-slurmctld_agent.obj `if test -f '../../contribs/sim/slurmctld_agent.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_agent.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_agent.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_agent.Tpo $(DEPDIR)/slurmctld-slurmctld_agent.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_agent.c' object='slurmctld-slurmctld_agent.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_agent.obj: ../../contribs/sim/slurmctld_agent.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_agent.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_agent.obj `if test -f '../../contribs/sim/slurmctld_agent.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_agent.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_agent.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_agent.c' object='../../contribs/sim/slurmctld-slurmctld_agent.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_agent.obj `if test -f '../../contribs/sim/slurmctld_agent.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_agent.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_agent.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_agent.obj `if test -f '../../contribs/sim/slurmctld_agent.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_agent.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_agent.c'; fi`
 
-slurmctld-slurmctld_job_scheduler.o: ../../contribs/sim/slurmctld_job_scheduler.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_job_scheduler.o -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo -c -o slurmctld-slurmctld_job_scheduler.o `test -f '../../contribs/sim/slurmctld_job_scheduler.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_job_scheduler.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_job_scheduler.c' object='slurmctld-slurmctld_job_scheduler.o' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_job_scheduler.o: ../../contribs/sim/slurmctld_job_scheduler.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_job_scheduler.o -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_job_scheduler.o `test -f '../../contribs/sim/slurmctld_job_scheduler.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_job_scheduler.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_job_scheduler.c' object='../../contribs/sim/slurmctld-slurmctld_job_scheduler.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_job_scheduler.o `test -f '../../contribs/sim/slurmctld_job_scheduler.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_job_scheduler.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_job_scheduler.o `test -f '../../contribs/sim/slurmctld_job_scheduler.c' || echo '$(srcdir)/'`../../contribs/sim/slurmctld_job_scheduler.c
 
-slurmctld-slurmctld_job_scheduler.obj: ../../contribs/sim/slurmctld_job_scheduler.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-slurmctld_job_scheduler.obj -MD -MP -MF $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo -c -o slurmctld-slurmctld_job_scheduler.obj `if test -f '../../contribs/sim/slurmctld_job_scheduler.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_job_scheduler.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_job_scheduler.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo $(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_job_scheduler.c' object='slurmctld-slurmctld_job_scheduler.obj' libtool=no @AMDEPBACKSLASH@
+../../contribs/sim/slurmctld-slurmctld_job_scheduler.obj: ../../contribs/sim/slurmctld_job_scheduler.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT ../../contribs/sim/slurmctld-slurmctld_job_scheduler.obj -MD -MP -MF ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo -c -o ../../contribs/sim/slurmctld-slurmctld_job_scheduler.obj `if test -f '../../contribs/sim/slurmctld_job_scheduler.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_job_scheduler.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_job_scheduler.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Tpo ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='../../contribs/sim/slurmctld_job_scheduler.c' object='../../contribs/sim/slurmctld-slurmctld_job_scheduler.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o slurmctld-slurmctld_job_scheduler.obj `if test -f '../../contribs/sim/slurmctld_job_scheduler.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_job_scheduler.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_job_scheduler.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -c -o ../../contribs/sim/slurmctld-slurmctld_job_scheduler.obj `if test -f '../../contribs/sim/slurmctld_job_scheduler.c'; then $(CYGPATH_W) '../../contribs/sim/slurmctld_job_scheduler.c'; else $(CYGPATH_W) '$(srcdir)/../../contribs/sim/slurmctld_job_scheduler.c'; fi`
 
 slurmctld-controller.o: controller.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(slurmctld_CFLAGS) $(CFLAGS) -MT slurmctld-controller.o -MD -MP -MF $(DEPDIR)/slurmctld-controller.Tpo -c -o slurmctld-controller.o `test -f 'controller.c' || echo '$(srcdir)/'`controller.c
@@ -1532,6 +1582,10 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-rm -f ../../contribs/sim/$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../../contribs/sim/$(am__dirstamp)
+	-rm -f ../sbatch/$(DEPDIR)/$(am__dirstamp)
+	-rm -f ../sbatch/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1542,7 +1596,18 @@ clean-am: clean-generic clean-libtool clean-sbinPROGRAMS \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/slurmctld-acct_policy.Po
+		-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
+	-rm -f ../sbatch/$(DEPDIR)/slurmctld-opt.Po
+	-rm -f ../sbatch/$(DEPDIR)/slurmctld-xlate.Po
+	-rm -f ./$(DEPDIR)/slurmctld-acct_policy.Po
 	-rm -f ./$(DEPDIR)/slurmctld-agent.Po
 	-rm -f ./$(DEPDIR)/slurmctld-backup.Po
 	-rm -f ./$(DEPDIR)/slurmctld-controller.Po
@@ -1559,7 +1624,6 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/slurmctld-locks.Po
 	-rm -f ./$(DEPDIR)/slurmctld-node_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-node_scheduler.Po
-	-rm -f ./$(DEPDIR)/slurmctld-opt.Po
 	-rm -f ./$(DEPDIR)/slurmctld-partition_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-ping_nodes.Po
 	-rm -f ./$(DEPDIR)/slurmctld-port_mgr.Po
@@ -1570,15 +1634,6 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/slurmctld-read_config.Po
 	-rm -f ./$(DEPDIR)/slurmctld-reservation.Po
 	-rm -f ./$(DEPDIR)/slurmctld-rpc_queue.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_events.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_jobs.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_sbatch.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd_req.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_agent.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_controller.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd_protocol_defs.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd_protocol_pack.Po
@@ -1587,7 +1642,6 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/slurmctld-statistics.Po
 	-rm -f ./$(DEPDIR)/slurmctld-step_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-trigger_mgr.Po
-	-rm -f ./$(DEPDIR)/slurmctld-xlate.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1633,7 +1687,18 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/slurmctld-acct_policy.Po
+		-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_events.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_jobs.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_sbatch.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-sim_slurmd_req.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_agent.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_controller.Po
+	-rm -f ../../contribs/sim/$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
+	-rm -f ../sbatch/$(DEPDIR)/slurmctld-opt.Po
+	-rm -f ../sbatch/$(DEPDIR)/slurmctld-xlate.Po
+	-rm -f ./$(DEPDIR)/slurmctld-acct_policy.Po
 	-rm -f ./$(DEPDIR)/slurmctld-agent.Po
 	-rm -f ./$(DEPDIR)/slurmctld-backup.Po
 	-rm -f ./$(DEPDIR)/slurmctld-controller.Po
@@ -1650,7 +1715,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/slurmctld-locks.Po
 	-rm -f ./$(DEPDIR)/slurmctld-node_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-node_scheduler.Po
-	-rm -f ./$(DEPDIR)/slurmctld-opt.Po
 	-rm -f ./$(DEPDIR)/slurmctld-partition_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-ping_nodes.Po
 	-rm -f ./$(DEPDIR)/slurmctld-port_mgr.Po
@@ -1661,15 +1725,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/slurmctld-read_config.Po
 	-rm -f ./$(DEPDIR)/slurmctld-reservation.Po
 	-rm -f ./$(DEPDIR)/slurmctld-rpc_queue.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_events.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_jobs.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_sbatch.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd_get_mach_stat.Po
-	-rm -f ./$(DEPDIR)/slurmctld-sim_slurmd_req.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_agent.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_controller.Po
-	-rm -f ./$(DEPDIR)/slurmctld-slurmctld_job_scheduler.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd_protocol_defs.Po
 	-rm -f ./$(DEPDIR)/slurmctld-slurmscriptd_protocol_pack.Po
@@ -1678,7 +1733,6 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/slurmctld-statistics.Po
 	-rm -f ./$(DEPDIR)/slurmctld-step_mgr.Po
 	-rm -f ./$(DEPDIR)/slurmctld-trigger_mgr.Po
-	-rm -f ./$(DEPDIR)/slurmctld-xlate.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
